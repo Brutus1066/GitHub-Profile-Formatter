@@ -1,0 +1,22 @@
+# Build output
+out/
+dist/
+
+# Dependencies
+node_modules/
+
+# VS Code extension package
+*.vsix
+
+# IDE
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*

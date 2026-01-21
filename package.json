@@ -1,0 +1,137 @@
+{
+  "name": "github-profile-formatter",
+  "displayName": "GitHub Profile Formatter",
+  "description": "Convert Markdown ↔ BBCode and generate GitHub profile badges. Perfect for cross-posting between GitHub and forums.",
+  "version": "1.0.0",
+  "publisher": "kindware",
+  "author": {
+    "name": "LAZYFROG",
+    "url": "https://kindware.dev"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Brutus1066/github-profile-formatter"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Formatters",
+    "Other"
+  ],
+  "keywords": [
+    "github",
+    "markdown",
+    "bbcode",
+    "profile",
+    "forum",
+    "formatting",
+    "converter"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "githubProfileFormatter.markdownToBBCode",
+        "title": "Convert Markdown to BBCode",
+        "category": "GitHub Profile"
+      },
+      {
+        "command": "githubProfileFormatter.bbcodeToMarkdown",
+        "title": "Convert BBCode to Markdown",
+        "category": "GitHub Profile"
+      },
+      {
+        "command": "githubProfileFormatter.insertBadge",
+        "title": "Insert GitHub Badge",
+        "category": "GitHub Profile"
+      },
+      {
+        "command": "githubProfileFormatter.insertStatsCard",
+        "title": "Insert GitHub Stats Card",
+        "category": "GitHub Profile"
+      },
+      {
+        "command": "githubProfileFormatter.wrapSelection",
+        "title": "Format Selection",
+        "category": "GitHub Profile"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "submenu": "githubProfileFormatter.submenu",
+          "group": "1_modification"
+        }
+      ],
+      "githubProfileFormatter.submenu": [
+        {
+          "command": "githubProfileFormatter.markdownToBBCode",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "githubProfileFormatter.bbcodeToMarkdown",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "githubProfileFormatter.wrapSelection",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "githubProfileFormatter.insertBadge"
+        },
+        {
+          "command": "githubProfileFormatter.insertStatsCard"
+        }
+      ]
+    },
+    "submenus": [
+      {
+        "id": "githubProfileFormatter.submenu",
+        "label": "GitHub Profile Formatter"
+      }
+    ],
+    "configuration": {
+      "title": "GitHub Profile Formatter",
+      "properties": {
+        "githubProfileFormatter.defaultUsername": {
+          "type": "string",
+          "default": "",
+          "description": "Default GitHub username for badge generation"
+        },
+        "githubProfileFormatter.preferredBBCodeStyle": {
+          "type": "string",
+          "enum": [
+            "phpBB",
+            "vBulletin",
+            "XenForo",
+            "Classic"
+          ],
+          "default": "phpBB",
+          "description": "Preferred BBCode dialect for conversion"
+        },
+        "githubProfileFormatter.autoCopyToClipboard": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically copy converted text to clipboard"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.2"
+  }
+}
